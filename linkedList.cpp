@@ -21,7 +21,15 @@ void insert(Node<int> *head, int newData) {
         temp = temp->next;
     }
 
-    temp->next = new Node(newData);
+    temp->next = new Node<int>(newData);
+}
+
+void insertAtHead(Node<int> *head, int newData) {
+    Node<int> *temp = head->next;
+    
+    head->next = new Node<int>(newData);
+    head->next->next = temp;
+
 }
 
 void print(Node<int> *head) {
@@ -56,7 +64,8 @@ int main(void) {
 
     print(head);
 
-    deleteNode(head, 12);
+    // deleteNode(head, 12);
+    insertAtHead(head, 17);
 
     print(head);
 
