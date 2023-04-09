@@ -33,12 +33,30 @@ void print(Node* head) {
     cout << endl;
 }
 
+void deleteNode(Node* head, int data) {
+    Node* temp = head;
+
+    Node* prev = NULL;
+    while (temp != NULL && temp->data != data) {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    // assuming the node is found
+    if (temp != NULL) prev->next = temp->next;
+
+}
+
 int main(void) {
     Node *head = new Node(0); 
 
     for (int i = 1; i <= 10; i++) {
         insert(head, i);
     }
+
+    print(head);
+
+    deleteNode(head, 12);
 
     print(head);
 
