@@ -89,6 +89,20 @@ Node<int> *rReverse(Node<int> *node) {
     return newHead;
 }
 
+void reverse(Node<int>* &head) {
+    Node<int> *prev = NULL;
+    Node<int> *current = head;
+    Node<int> *next = head;
+
+    while (next != NULL) {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;  
+    }
+    head = prev;
+}
+
 int main(void) {
     Node<int> *head = new Node<int>(0); 
 
@@ -102,7 +116,8 @@ int main(void) {
     // insertInMiddle(head, 23, 2);
     // insertAtHead(head, 17);
     // insertAtHead(head, 23);
-    head = rReverse(head);
+    // head = rReverse(head);
+    reverse(head);
 
     print(head);
 
