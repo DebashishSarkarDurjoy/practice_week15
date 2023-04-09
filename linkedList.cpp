@@ -2,20 +2,20 @@
 
 using namespace std;
 
-
+template <typename T>
 class Node {
 public:
-    int data;
-    Node* next;
+    T data;
+    Node<T> *next;
     
-    Node (int data) {
+    Node (T data) {
         this->data = data;
         this->next = NULL;
     }
 };
 
-void insert(Node* head, int newData) {
-    Node* temp = head;
+void insert(Node<int> *head, int newData) {
+    Node<int> *temp = head;
 
     while (temp->next != NULL) {
         temp = temp->next;
@@ -24,8 +24,8 @@ void insert(Node* head, int newData) {
     temp->next = new Node(newData);
 }
 
-void print(Node* head) {
-    Node* temp = head;
+void print(Node<int> *head) {
+    Node<int> *temp = head;
     while (temp != NULL) {
         cout << temp->data << " -> ";
         temp = temp->next;
@@ -33,10 +33,10 @@ void print(Node* head) {
     cout << endl;
 }
 
-void deleteNode(Node* head, int data) {
-    Node* temp = head;
+void deleteNode(Node<int> *head, int data) {
+    Node<int> *temp = head;
 
-    Node* prev = NULL;
+    Node<int> *prev = NULL;
     while (temp != NULL && temp->data != data) {
         prev = temp;
         temp = temp->next;
@@ -48,7 +48,7 @@ void deleteNode(Node* head, int data) {
 }
 
 int main(void) {
-    Node *head = new Node(0); 
+    Node<int> *head = new Node<int>(0); 
 
     for (int i = 1; i <= 10; i++) {
         insert(head, i);
