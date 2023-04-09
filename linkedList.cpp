@@ -73,6 +73,22 @@ void deleteNode(Node<int> *head, int data) {
 
 }
 
+Node<int> *rReverse(Node<int> *node) {
+    // base case
+    if (node->next == NULL) {
+        return node;
+    }
+
+    // recursive case
+    Node<int> *newHead = rReverse(node->next);
+
+    Node<int> *current = node;
+    current->next->next = current;
+    current->next = NULL;
+
+    return newHead;
+}
+
 int main(void) {
     Node<int> *head = new Node<int>(0); 
 
@@ -84,7 +100,10 @@ int main(void) {
 
     // deleteNode(head, 12);
     // insertInMiddle(head, 23, 2);
-    
+    // insertAtHead(head, 17);
+    // insertAtHead(head, 23);
+    head = rReverse(head);
+
     print(head);
 
     return 0;
