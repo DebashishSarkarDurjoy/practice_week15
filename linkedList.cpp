@@ -29,7 +29,25 @@ void insertAtHead(Node<int> *head, int newData) {
     
     head->next = new Node<int>(newData);
     head->next->next = temp;
+}
 
+void insertInMiddle(Node<int> *head, int newData, int pos) {
+    if (pos == 0) {
+        insertAtHead(head, newData);
+        return ;
+    }
+
+    Node<int> *temp = head;
+    Node<int> *prev = NULL;
+    for (int jump = 1; jump <= pos-1; jump++) {
+        prev = temp;
+        temp = temp->next;
+    }
+
+    Node<int> *newNode = new Node<int>(newData);
+    newNode->next = temp;
+    prev->next = newNode;
+    
 }
 
 void print(Node<int> *head) {
@@ -65,8 +83,8 @@ int main(void) {
     print(head);
 
     // deleteNode(head, 12);
-    insertAtHead(head, 17);
-
+    // insertInMiddle(head, 23, 2);
+    
     print(head);
 
     return 0;
